@@ -1,0 +1,8 @@
+pre:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+pre{
+    color: blue;
+    
+}

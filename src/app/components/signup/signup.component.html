@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-card>
+        <form #f="ngForm">
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field class="width100">
+                        <input matInput placeholder="Your name" value="" required [(ngModel)]="user.name" name="name">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-4">
+                    <mat-form-field class="width100">
+                        <input matInput placeholder="Your email" value="" required [(ngModel)]="user.email" name="email" [email]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">        
+                <div class="col-4">
+                    <mat-form-field class="width100">
+                        <input matInput placeholder="Password" value="" type="password" required [(ngModel)]="user.password" name="password">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">        
+                <div class="col-4">
+                    <mat-form-field class="width100">
+                        <input matInput placeholder="Repite your password" value="" type="password" required [(ngModel)]="password2" name="password2">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">        
+                <div class="col-4">
+                    <button mat-raised-button color="primary" (click)="signUp()" [disabled] ="f.invalid">Submit</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<div class="row" *ngIf="loginService.user.logged">
+    <form #f=ngForm class="width100">
+
+        <div class="col-12 width100">
+            <mat-form-field class="width100">
+                <textarea matInput placeholder="Leave an Answer" [(ngModel)]="answer" name ="answer" required></textarea>
+            </mat-form-field>
+        </div>
+        <div class="row width100">
+            <span class="flex"></span>
+            <button mat-raised-button color="primary" (click)="postAnswer()" [disabled] ="f.invalid">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="row" *ngIf="!loginService.user.logged">
+    <div class="col-12">
+        <h5>You need to <a [routerLink]="['/login', '']">login</a> to leave an answer</h5>
+    </div>
+</div>

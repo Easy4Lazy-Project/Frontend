@@ -1,0 +1,42 @@
+<div class="row align-items-center" id="principalRow">
+    <div class="col"></div>
+    <!--<span class="align-items-center">-->
+        <mat-card>
+            <div class="col">
+                <form #f="ngForm">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <img src="./assets/logo.png" alt="">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="email" type="email" [(ngModel)]="email" name="email" [email]="true" required>
+                                <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput type="password" [(ngModel)]="password" placeholder="password" required name = "password">
+                                <mat-icon matSuffix>lock</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <button mat-raised-button color="primary" [disabled] = "f.invalid" (click)="login()">Log In</button>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </form>
+            </div>
+        </mat-card>
+    <!--</span>-->
+        <div class="col"></div>
+    </div>

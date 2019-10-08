@@ -1,0 +1,44 @@
+<div class="container"> <!--Container for all the questions-->
+    <mat-card>
+        <div class="row" *ngFor="let question of questions">
+            <mat-card class="width100">
+                <div class="row width100">
+                    <div class="col"></div>
+                    <div class="col-11">
+                        <a [routerLink]="[ '/question', question.questionId ]"><h4>Subject</h4></a>
+                    </div>
+                </div>
+                <div class="row width100">
+                    <div class="col"></div>
+                    <div class="col-2">
+                            <mat-icon matSuffix [color]="getColor(question.myVote, 'like')">thumb_up</mat-icon>
+                            {{question.like}}
+                        <mat-icon matSuffix [color]="getColor(question.myVote, 'dislike')">thumb_down</mat-icon> {{question.dislike}}
+                    </div>
+                    <div class="col-2"><b>Created: </b> {{question.creationDate | date}}</div>
+                    <div class="col-2"> <b>By: </b> {{question.name}}</div>
+                    <div class="col-2"><b>{{question.answerCount}} Answers</b></div>
+                    <!--<div class="col-2"><b>Tags: </b>{{question.tags}}</div>-->
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <p>{{question.bodyToShow}}</p><pre *ngIf="question.moreBody"><a (click)="showMoreBody(question)">[More... ]</a></pre>
+                        
+                    </div>
+                    
+                </div><!--For body of the question-->
+                
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-11">
+                        <p class="x-small"><b>Tags: </b>{{question.tags}}</p>
+                    </div>
+                </div>
+                
+                <hr>
+            </mat-card>
+        </div>
+    </mat-card>
+</div>
