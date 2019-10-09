@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   private username = "Eduardo";
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(public loginService: LoginService, private router: Router) {
     //console.log(loginService.user);
    }
 

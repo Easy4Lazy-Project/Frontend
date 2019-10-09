@@ -7,12 +7,12 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./post-question.component.css']
 })
 export class PostQuestionComponent implements OnInit {
-  private question= {
+  question= {
     subject: "",
     body: "",
     tags: ""
   };
-  constructor(loginService:LoginService) { }
+  constructor(public loginService:LoginService) { }
   postQuestion(){
     console.log("nothing to do");
   }

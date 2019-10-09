@@ -6,8 +6,8 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private email:string = "";
-  private password:string="";
+  email:string = "";
+  password:string="";
   constructor(private loginService: LoginService) { }
   login(){
     this.loginService.login2(this.email,this.password);

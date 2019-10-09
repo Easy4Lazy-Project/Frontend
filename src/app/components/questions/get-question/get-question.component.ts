@@ -9,7 +9,7 @@ import {environment} from 'src/environments/environment';
 })
 export class GetQuestionComponent implements OnInit {
   private questionId ="";
-  private question:any = {
+  question:any = {
     questionId: "1",
     subject: "how to do a project in two days",
     creationDate: "10/05/2019",
@@ -66,8 +66,9 @@ export class GetQuestionComponent implements OnInit {
     }]
   };
   constructor(private http: HttpClient, private route: ActivatedRoute) {
-    /* commented by now
     this.questionId = this.route.snapshot.paramMap.get("questionId");
+    console.log("PARAMS _> " + this.questionId);
+    /* commented by now
     let url = environment.base_url+"getQuestion?id="+this.questionId;
     this.http.get(url).toPromise().then(question =>{
       this.question =question;

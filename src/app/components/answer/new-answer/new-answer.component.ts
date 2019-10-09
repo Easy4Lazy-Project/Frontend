@@ -9,7 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NewAnswerComponent implements OnInit {
   @Input() questionId:number;
-  constructor(private loginService: LoginService) {
+  answer:string ="";
+  constructor(public loginService: LoginService) {
    }
 
   ngOnInit() {

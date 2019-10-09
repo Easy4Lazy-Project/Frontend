@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./get-all-questions.component.css']
 })
 export class GetAllQuestionsComponent implements OnInit {
-  private questions = [{
+  questions = [{
     questionId: 'some',
     like: 20,
     dislike: 20,

@@ -4,21 +4,21 @@
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="width100">
-                        <input matInput placeholder="Subject" value="" required [(ngModel)]="question.subject" name="subject">
+                        <input matInput placeholder="Subject" value="" required [(ngModel)]="question['subject']" name="subject">
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="width100">
-                        <textarea matInput placeholder="Body of your question" [(ngModel)]="question.body" name="body"></textarea>
+                        <textarea matInput placeholder="Body of your question" [(ngModel)]="question['body']" name="body"></textarea>
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="width100">
-                        <input matInput placeholder="Add some tags" value="" [(ngModel)]="question.tags" name="tags" >
+                        <input matInput placeholder="Add some tags" value="" [(ngModel)]="question['tags']" name="tags" >
                     </mat-form-field>
                 </div>
             </div>

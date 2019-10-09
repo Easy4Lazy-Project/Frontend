@@ -3,25 +3,25 @@
             <mat-card>
                 <div class="row" >
                     <div class="col">
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer.myVote, 'like')">thumb_up</mat-icon> {{answer.like}}
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer.myVote, 'dislike')">thumb_down</mat-icon> {{answer.dislike}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer['myVote'], 'like')">thumb_up</mat-icon> {{answer['like']}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer['myVote'], 'dislike')">thumb_down</mat-icon> {{answer['dislike']}}
                     </div>
                     <div class="col">
-                        <h6><b>Name: </b>{{answer.name}}</h6>
+                        <h6><b>Name: </b>{{answer['name']}}</h6>
                     </div>
                     <div class="col">
-                        <h6><b>Date: </b>{{answer.creationDate | date}}</h6>
+                        <h6><b>Date: </b>{{answer['creationDate'] | date}}</h6>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p>{{answer.body}}</p>
+                        <p>{{answer['body']}}</p>
                     </div>
                 </div>
-                <div *ngIf="answer.comments.length!=0">
+                <div *ngIf="answer['comments'].length!=0">
                     <hr>
                     <h5>Comments</h5>
-                    <div *ngFor="let comment of answer.comments">
+                    <div *ngFor="let comment of answer['comments']">
                         <div class="container">
                             <app-comment [comment]='comment' class="small"></app-comment>
                         </div>
