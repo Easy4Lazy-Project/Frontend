@@ -5,19 +5,20 @@
                 <div class="row width100">
                     <div class="col"></div>
                     <div class="col-11">
-                        <a [routerLink]="[ '/question', question['questionId'] ]"><h4>Subject</h4></a>
+                        <a [routerLink]="[ '/question', question['id'] ]"><h4>{{question['subject']}}</h4></a>
                     </div>
                 </div>
                 <div class="row width100">
                     <div class="col"></div>
                     <div class="col-2">
-                            <mat-icon matSuffix [color]="getColor(question['myVote'], 'like')">thumb_up</mat-icon>
-                            {{question['like']}}
-                        <mat-icon matSuffix [color]="getColor(question['myVote'], 'dislike')">thumb_down</mat-icon> {{question['dislike']}}
+                            <mat-icon matSuffix [color]="getColor(question['myVote'], 'like')" >thumb_up</mat-icon>
+                            {{question['likes']}}
+                        <mat-icon matSuffix [color]="getColor(question['myVote'], 'dislike')" >thumb_down</mat-icon> {{question['dislike']}}
                     </div>
-                    <div class="col-2"><b>Created: </b> {{question['creationDate'] | date}}</div>
+                    <div class="col-4"><b>Created: </b> {{question['creationDate'] }}</div>
                     <div class="col-2"> <b>By: </b> {{question['name']}}</div>
-                    <div class="col-2"><b>{{question['answerCount']}} Answers</b></div>
+                   <!-- <div class="col-2"><b>{{question['answerCount']}} Answers</b></div> --> 
+                   <!--Commented because the answers count is not in the json-->
                     <!--<div class="col-2"><b>Tags: </b>{{question.tags}}</div>-->
                     <div class="col"></div>
                 </div>
@@ -33,7 +34,7 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-11">
-                        <p class="x-small"><b>Tags: </b>{{question['tags']}}</p>
+                        <p class="small"><b>Tags: </b>{{question['tags']}}</p>
                     </div>
                 </div>
                 

@@ -9,6 +9,7 @@ import { PostQuestionComponent } from './components/questions/post-question/post
 import { SignupComponent } from './components/signup/signup.component';
 import { GetQuestionComponent } from './components/questions/get-question/get-question.component';
 import { GetAllQuestionsComponent } from './components/questions/get-all-questions/get-all-questions.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path:'question/new', component: PostQuestionComponent, canActivate:[authGuard]},
   { path:'signup', component: SignupComponent,  canActivate:[noAuthGuard]},
   { path:'question/:questionId', component: GetQuestionComponent},
+  { path:'dashboard', component: DashboardComponent,canActivate:[authGuard]},
   {  path: '**', pathMatch: 'full', component: GetAllQuestionsComponent}
 ];
 

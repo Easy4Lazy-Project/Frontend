@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10"><h1>Dashboard</h1></div>
+        <div class="col"></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <!--Graph one-->
+            <h5>Questions/Answers per month in the current year</h5>
+            <div style="display: block;">
+                <canvas baseChart 
+                [datasets]="questionChart.datasets"
+                [labels]="questionChart.labels"
+                [options]="questionChart.options"
+                [colors]="questionChart.colors"
+                [legend]="questionChart.legend"
+                [chartType]="questionChart.chartType"
+                ></canvas>
+            </div>
+        </div>
+        <div class="col">
+            <!--Graph two-->
+            <h5>Most voted questions</h5>
+            <div style="display: block;">
+                    <canvas baseChart 
+                    [datasets]="mostVotedChart.datasets"
+                    [labels]="mostVotedChart.labels"
+                    [options]="mostVotedChart.options"
+                    [colors]="mostVotedChart.colors"
+                    [legend]="mostVotedChart.legend"
+                    [chartType]="mostVotedChart.chartType"
+                   ></canvas>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="row" *ngIf="loginService['user']['logged']">
-    <form #f=ngForm class="width100">
+    <form #f="ngForm" class="width100">
 
         <div class="col-12 width100">
             <mat-form-field class="width100">
@@ -14,6 +14,6 @@
 </div>
 <div class="row" *ngIf="!loginService['user']['logged']">
     <div class="col-12">
-        <h5>You need to <a [routerLink]="['/login', '']">login</a> to leave an answer</h5>
+        <h5>You need to <a class="link pointer" (click)="sendToLogin()">login</a> to leave an answer</h5>
     </div>
 </div>

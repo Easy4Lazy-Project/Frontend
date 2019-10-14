@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login/login.component';
 import { GetAnswerComponent } from './components/answer/get-answer/get-answer.component';
 import { NewAnswerComponent } from './components/answer/new-answer/new-answer.component';
-import {MatCardModule, MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule} from '@angular/material';
+import {MatCardModule, MatInputModule, MatSnackBarModule, MatIconModule, MatButtonModule, MatToolbarModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { PostQuestionComponent } from './components/questions/post-question/post-question.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -16,6 +16,8 @@ import { CommentComponent } from './components/comments/comment/comment.componen
 import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/nav/navbar/navbar.component';
 import { GetAllQuestionsComponent } from './components/questions/get-all-questions/get-all-questions.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -29,9 +31,12 @@ import { GetAllQuestionsComponent } from './components/questions/get-all-questio
     GetQuestionComponent,
     CommentComponent,
     NavbarComponent,
-    GetAllQuestionsComponent
+    GetAllQuestionsComponent,
+    DashboardComponent
   ],
   imports: [
+    ChartsModule,
+    MatSnackBarModule,
     MatToolbarModule,
     HttpClientModule,
     BrowserModule,

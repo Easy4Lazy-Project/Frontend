@@ -24,3 +24,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .small{
     font-size: small;
 }
+.link{
+    color: blue !important;
+}
+.link:hover{
+    text-decoration: underline !important;
+}

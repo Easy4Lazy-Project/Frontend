@@ -3,24 +3,24 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{question.subject}}
+                    {{question['subject']}}
                 </h1>
             </div>
             <div class="col-12">
                 <div class="row">
                     <div class="col">
-                        <b>Asked: </b> {{question.creationDate}}
+                        <b>Asked: </b> {{question['creationDate']}}
                     </div>
                     <div class="col">
-                       <b>User: </b> {{question.name}}
+                       <b>User: </b> {{question['name']}}
                     </div>
                     <div class="col">
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(question.myVote, 'like')">thumb_up</mat-icon>
-                            {{question.like}}
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(question.myVote, 'dislike')">thumb_down</mat-icon> {{question.dislike}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote('1')" [color]="getColor(question['myVote'], 'like')">thumb_up</mat-icon>
+                            {{question['like']}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote('2')" [color]="getColor(question['myVote'], 'dislike')">thumb_down</mat-icon> {{question['dislike']}}
                     </div>
                     <div class="col">
-                       <b>Answers: </b> {{question.answerCount}}
+                       <b>Answers: </b> {{question['answerCount']}}
                     </div>
                 </div>
             </div>
@@ -32,15 +32,33 @@
                     <mat-card>
                         <div class="row">
                             <div class="col-12">
-                                <p> {{question.body}} </p>
+                                <p> {{question['body']}} </p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <p><b>Tags: </b>{{question.tags}}</p>
+                            <div class="col-10">
+                                <p><b>Tags: </b>{{question['tags']}}</p>
+                            </div>
+                            <div class="col" *ngIf="logged()">
+                                <button mat-raised-button color="primary" (click)="showCommentForm = !showCommentForm">Add comment</button>
                             </div>
                         </div>
-                        <mat-card *ngFor="let comment of question.comments">
+                        <div class="row" *ngIf="showCommentForm">
+                            <form #commentForm="ngForm" class="width100">
+
+                                <div class="col-12 width100">
+                                    <mat-form-field class="width100">
+                                        <textarea matInput placeholder="Leave your comment" [(ngModel)]="questionComment" name ="questionComment" required></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row width100">
+                                    <span class="flex"></span>
+                                    <button mat-raised-button color="primary" (click)="postComment(questionComment,questionId)" [disabled] ="commentForm.invalid">Submit</button>
+                                </div>
+                            </form>
+                            <br><br>
+                        </div>
+                        <mat-card *ngFor="let comment of question['comments']">
 
                             <div class="row">
                                 <app-comment class="width100 small" [comment]='comment'></app-comment>
@@ -53,11 +71,11 @@
         <hr>
         <div class="container">
             <h5>Answers</h5>
-            <mat-card *ngFor="let answer of question.answers">
+            <mat-card *ngFor="let answer of question['answers']">
                 <app-get-answer class="width100" [answer]='answer'></app-get-answer>
             </mat-card>
             <mat-card>
-                <app-new-answer [questionId]="question.questionId"></app-new-answer>
+                <app-new-answer [questionId]="question['id']"></app-new-answer>
             </mat-card>
         </div>
         <h5></h5>

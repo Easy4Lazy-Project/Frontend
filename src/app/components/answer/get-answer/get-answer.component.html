@@ -3,8 +3,8 @@
             <mat-card>
                 <div class="row" >
                     <div class="col">
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer['myVote'], 'like')">thumb_up</mat-icon> {{answer['like']}}
-                        <mat-icon matSuffix class="pointer" (click) ="vote()" [color]="getColor(answer['myVote'], 'dislike')">thumb_down</mat-icon> {{answer['dislike']}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote('1')" [color]="getColor(answer['myVote'], 'like')">thumb_up</mat-icon> {{answer['like']}}
+                        <mat-icon matSuffix class="pointer" (click) ="vote('2')" [color]="getColor(answer['myVote'], 'dislike')">thumb_down</mat-icon> {{answer['dislike']}}
                     </div>
                     <div class="col">
                         <h6><b>Name: </b>{{answer['name']}}</h6>
@@ -18,6 +18,29 @@
                         <p>{{answer['body']}}</p>
                     </div>
                 </div>
+                <!----Comment part-->
+                <div class="row">
+                    <div class="col-10"></div>
+                    <div class="col" *ngIf="logged()">
+                        <button mat-raised-button color="primary" (click)="showCommentForm = !showCommentForm">Add comment</button>
+                    </div>
+                </div>
+                <div class="row" *ngIf="showCommentForm">
+                    <form #commentForm="ngForm" class="width100">
+
+                        <div class="col-12 width100">
+                            <mat-form-field class="width100">
+                                <textarea matInput placeholder="Leave your comment" [(ngModel)]="questionComment" name ="questionComment" required></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="row width100">
+                            <span class="flex"></span>
+                            <button mat-raised-button color="primary" (click)="postComment(questionComment,answer['id'])" [disabled] ="commentForm.invalid">Submit</button>
+                        </div>
+                    </form>
+                    <br><br>
+                </div>
+                <!----End Comment part-->
                 <div *ngIf="answer['comments'].length!=0">
                     <hr>
                     <h5>Comments</h5>

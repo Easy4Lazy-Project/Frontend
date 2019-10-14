@@ -28,5 +28,10 @@ export class NavbarComponent implements OnInit {
     //console.log("signup function");
     this.router.navigate(['signup']);
   }
-
+  search(){
+    this.router.navigate(['home']);
+  }
+  getDashboard(){
+    this.router.navigate(['dashboard']);
+  }
 }
