@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router"; 
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-get-all-questions',
   templateUrl: './get-all-questions.component.html',
@@ -21,7 +22,7 @@ user_id: 1
 */
   questions:any = [];
   search = "";
-  constructor(private http:HttpClient, private route:ActivatedRoute) {
+  constructor(private http:HttpClient, private route:ActivatedRoute, private snack:MatSnackBar) {
     this.questions =[];
     /*
     this.search = this.route.snapshot.paramMap.get("search"); //gettin param
@@ -49,6 +50,11 @@ user_id: 1
     let url = `${environment.base_url}content/q/search/${search}`;
       //this.http.get(url).toPromise().then(questions =>{
       this.http.get(url).toPromise().then((data:any) =>{
+        console.log("from searching");
+        console.log(data);
+        if(data.length ==0){
+          this.snack.open("We couldn't find any question related to your search :(",null,{duration:5000});
+        }
         for(var i=0; i<data.length; i++){
           //votes part
           if(data[i]['likes'] == undefined){
