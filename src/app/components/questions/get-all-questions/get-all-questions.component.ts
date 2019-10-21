@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from "@angular/router"; 
 @Component({
   selector: 'app-get-all-questions',
   templateUrl: './get-all-questions.component.html',
@@ -19,17 +20,61 @@ tags: "c# .net windows"
 user_id: 1
 */
   questions:any = [];
-
-  constructor(private http:HttpClient) {
-    this.getAllQuestions();
-    for(var i=0;i<this.questions.length; i++){
-      
+  search = "";
+  constructor(private http:HttpClient, private route:ActivatedRoute) {
+    this.questions =[];
+    /*
+    this.search = this.route.snapshot.paramMap.get("search"); //gettin param
+    console.log(this.search);
+    if(this.search == undefined || this.search == null || this.search ==""){
+      this.getAllQuestions();
     }
-    console.log(this.questions);
+    else{
+      this.searchQuestions(this.search);
+    }
+    */
+  }
+  ngOnInit() {
+    this.route.params.subscribe(routeParams => {
+      this.search = routeParams.search;
+      if(this.search == undefined || this.search == null || this.search ==""){
+        this.getAllQuestions();
+      }
+      else{
+        this.searchQuestions(this.search);
+      }
+    });
+  }
+  searchQuestions(search){
+    let url = `${environment.base_url}content/q/search/${search}`;
+      //this.http.get(url).toPromise().then(questions =>{
+      this.http.get(url).toPromise().then((data:any) =>{
+        for(var i=0; i<data.length; i++){
+          //votes part
+          if(data[i]['likes'] == undefined){
+            data[i]['likes'] = 0;
+          }
+          if(data[i]['dislike'] == undefined){
+            data[i]['dislike'] = 0;
+          }
+          //Body part
+
+          if(data[i].body.length> 300){
+            data[i]['bodyToShow'] = data[i].body.substring(300,0);
+            data[i]['moreBody'] = true;
+          }
+          else {
+            data[i]['bodyToShow'] = data[i].body;
+            data[i]['moreBody'] = false;
+          }
+
+        }
+        this.questions = data;
+        //console.log(data);
+      });
   }
 
-  ngOnInit() {
-  }
+ 
   getColor(vote: string,voteType:string){
     if(vote == voteType) return 'primary';
   }

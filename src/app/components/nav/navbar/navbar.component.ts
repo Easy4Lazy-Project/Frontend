@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   private username = "Eduardo";
+  public searchtext = "";
   constructor(public loginService: LoginService, private router: Router) {
     //console.log(loginService.user);
    }
@@ -29,7 +30,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['signup']);
   }
   search(){
-    this.router.navigate(['home']);
+    this.router.navigate(['search/'+this.searchtext]);
   }
   getDashboard(){
     this.router.navigate(['dashboard']);

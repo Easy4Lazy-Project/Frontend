@@ -19,6 +19,7 @@ const routes: Routes = [
   { path:'signup', component: SignupComponent,  canActivate:[noAuthGuard]},
   { path:'question/:questionId', component: GetQuestionComponent},
   { path:'dashboard', component: DashboardComponent,canActivate:[authGuard]},
+  {  path: 'search/:search',  component: GetAllQuestionsComponent},
   {  path: '**', pathMatch: 'full', component: GetAllQuestionsComponent}
 ];
 
